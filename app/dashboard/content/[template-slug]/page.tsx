@@ -16,17 +16,16 @@ import { TotalUsageContext } from '@/app/(context)/TotalUsageContext'
 import { AlertDialog } from '@/components/ui/alert-dialog'
 import { useRouter } from 'next/navigation'
 import { UpdateCreditUsageContext } from '@/app/(context)/UpdateCreditUsageContext'
+import { useParams } from 'next/navigation';
 
 
-interface PageProps{
 
-  params: {
-    'template-slug': string
-  }
-}
-function CreateNewContent(props: PageProps) {
+function CreateNewContent() {
+  const params = useParams();
+  const templateSlug = params?.["template-slug"] as string;
 
-  const selectedTemplate: TEMPLATE | undefined = Template?.find((item) => item.slug == props.params['template-slug']);
+  const selectedTemplate: TEMPLATE | undefined = Template?.find((item) => item.slug == templateSlug);
+
   const [loading, setLoading] = useState(false);
 
   const [aiOutput, setAiOutput] = useState<string>()
@@ -110,3 +109,4 @@ const SaveInDB = async (formData: any, slug: any, aiResp: string) => {
 }
 
 export default CreateNewContent
+
