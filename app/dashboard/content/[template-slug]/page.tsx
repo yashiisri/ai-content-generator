@@ -18,13 +18,13 @@ import { useRouter } from 'next/navigation'
 import { UpdateCreditUsageContext } from '@/app/(context)/UpdateCreditUsageContext'
 
 
-interface PROPS {
+interface PageProps{
 
   params: {
     'template-slug': string
   }
 }
-function CreateNewContent(props: PROPS) {
+function CreateNewContent(props: PageProps) {
 
   const selectedTemplate: TEMPLATE | undefined = Template?.find((item) => item.slug == props.params['template-slug']);
   const [loading, setLoading] = useState(false);
